@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -135,14 +134,12 @@ private fun DetailAction(
     onClick: () -> Unit,
     wide: Boolean = false,
 ) {
-    varFocusedAction(label) {
-        Box(
+    Box(
             modifier = Modifier
                 .width(if (wide) 244.dp else if (primary) 154.dp else 66.dp)
                 .height(if (wide) 48.dp else 46.dp)
                 .clip(RoundedCornerShape(26.dp))
                 .background(if (primary) Color.White else Color(0xCC1B242C))
-                .onFocusChanged { focused -> actionFocusState[label] = focused.isFocused }
                 .clickable(onClick = onClick)
                 .focusable()
                 .padding(horizontal = 18.dp),
@@ -154,15 +151,7 @@ private fun DetailAction(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
             )
-        }
     }
-}
-
-private val actionFocusState = mutableMapOf<String, Boolean>()
-
-@Composable
-private fun varFocusedAction(label: String, content: @Composable () -> Unit) {
-    content()
 }
 
 @Composable
