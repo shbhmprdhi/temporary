@@ -4,7 +4,7 @@
 - [x] Inspect the uploaded Chillio APK archive, DEX printable strings, and manifest metadata.
 - [x] Identify Nuvio home screen source files and public upstream branch.
 - [x] Write the clean-room design brief and home screen behavior specification.
-- [x] Add a standalone Jetpack Compose prototype matching the screenshot's top navigation, category tiles, Continue Watching, and Favorites layout.
+- [x] Add standalone Jetpack Compose prototypes for the home screen and cinematic media-detail screen.
 - [ ] Create an actual fork or working checkout of Nuvio source with write access.
 - [ ] Adapt the prototype to Nuvio's real `HomeUiState` and existing navigation/playback callbacks.
 - [ ] Build and run the modified APK on Android TV.
@@ -17,7 +17,9 @@
 - README build command: `./gradlew :app:assembleFullDebug`
 
 ## Prototype added
-- `ChillioInspiredHome.kt` — a clean-room, data-driven Compose UI prototype. It defines lightweight media/category models and a callback-driven home layout. It is a design/implementation starting point, not yet wired into Nuvio's production state or routes, and has not been compiled in the upstream project.
+- `ChillioInspiredHome.kt` — clean-room, data-driven home prototype with centered segmented navigation, category tiles, Continue Watching progress cards, and Favorites posters.
+- `ChillioInspiredDetail.kt` — cinematic detail prototype with backdrop gradients, Play/favorite/watched actions, metadata, synopsis, rating pills, and trailer affordance.
+- Both files are implementation starting points, not yet wired into Nuvio production state/routes, and have not been compiled in the upstream project.
 - The current screenshot is the source of truth for layout: centered top segmented navigation, greeting/profile on the left, date/account on the right, image-backed category tiles, compact landscape Continue Watching cards with progress, and portrait Favorites posters.
 
 ## What static inspection supports
