@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nuvio-inspired TV Home — visual mock</title>
+<style>
+:root{color-scheme:dark;--bg:#080a10;--fg:#f5f4f2;--muted:#a9acb7;--accent:#ffbd59;--panel:#161a24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+.tv{position:relative;width:100vw;min-height:100vh;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(90deg,#080a10 0%,rgba(8,10,16,.96) 24%,rgba(8,10,16,.35) 68%,rgba(8,10,16,.18)),linear-gradient(0deg,#080a10 3%,transparent 50%),radial-gradient(ellipse at 73% 24%,#513e76 0%,#1e2b4a 26%,#111827 56%,#080a10 82%)}
+.top{position:absolute;top:4.2%;left:6.5%;right:5%;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.brand{font-weight:800;letter-spacing:.15em;font-size:clamp(14px,1.15vw,22px)}.brand span{color:var(--accent)}
+.profile{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:clamp(12px,.9vw,18px)}.avatar{width:34px;height:34px;border-radius:50%;background:#35364a;border:1px solid #77718d;display:grid;place-items:center;color:white}
+.rail{position:absolute;top:14%;bottom:8%;left:2.1%;width:4.4%;display:flex;flex-direction:column;gap:13px;z-index:4}.nav{height:clamp(40px,4vw,66px);border:1px solid transparent;border-radius:13px;color:#9fa3af;display:grid;place-items:center;font-size:clamp(17px,1.45vw,26px);cursor:pointer;outline:none}.nav:focus,.nav.active{background:#242936;color:white;border-color:#535a6d;box-shadow:0 0 0 2px rgba(255,189,89,.23)}.nav:focus::after{content:attr(data-label);position:absolute;left:calc(100% + 12px);white-space:nowrap;background:#202531;padding:9px 13px;border-radius:9px;font-size:13px;letter-spacing:0;z-index:10}
+.hero{position:absolute;left:9%;top:19%;width:min(40%,650px);z-index:2}.eyebrow{color:var(--accent);font-size:clamp(10px,.82vw,15px);letter-spacing:.23em;font-weight:750;text-transform:uppercase;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";display:block;width:27px;height:2px;background:var(--accent)}
+h1{font-size:clamp(32px,4.2vw,76px);line-height:.98;letter-spacing:-.045em;margin:18px 0 15px;max-width:700px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:#d1d3db;font-size:clamp(11px,.92vw,17px);margin-bottom:16px}.pill{border:1px solid #747b8a;border-radius:4px;padding:1px 5px;font-size:.82em}.dot{width:4px;height:4px;border-radius:100%;background:#8b91a0}
+p{color:#d5d7df;max-width:580px;font-size:clamp(12px,1.08vw,19px);line-height:1.52;margin:0 0 23px}.actions{display:flex;gap:12px}.btn{display:flex;gap:10px;align-items:center;padding:12px 22px;border-radius:9px;background:#fff;color:#11131a;font-weight:750;border:2px solid transparent;min-width:110px;justify-content:center;cursor:pointer;font-size:clamp(12px,.9vw,16px)}.btn.secondary{background:rgba(42,45,57,.84);color:#fff;border-color:#5d6170}.btn:focus{outline:3px solid var(--accent);outline-offset:3px;transform:scale(1.04)}
+.hero-art{position:absolute;right:2%;top:13%;height:49%;width:49%;border-radius:40% 30% 32% 25%;background:radial-gradient(ellipse at 50% 43%,rgba(255,205,130,.85) 0%,rgba(199,107,93,.50) 10%,rgba(72,90,135,.40) 35%,rgba(18,21,33,0) 72%);filter:blur(2px);opacity:.8}
+.orb{position:absolute;right:11%;top:18%;width:33%;height:41%;border-radius:50%;background:radial-gradient(circle at 34% 30%,#c8b9a3 0%,#675e83 23%,#263b62 54%,#111726 75%);box-shadow:0 0 110px #7b5bb733;opacity:.52}
+.ring{position:absolute;right:4%;top:30%;width:47%;height:24%;border:2px solid #a99bc655;border-radius:50%;transform:rotate(-18deg);box-shadow:0 0 28px #8c82bb25}
+.shelf{position:absolute;z-index:3;left:9%;right:3%;bottom:5%;height:27%}.shelf-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.shelf h2{font-size:clamp(15px,1.3vw,23px);margin:0;font-weight:750}.shelf .hint{color:var(--muted);font-size:clamp(9px,.75vw,13px)}.cards{display:flex;gap:clamp(8px,.9vw,17px);height:76%;overflow:visible}
+.poster{position:relative;flex:0 0 clamp(82px,8.2vw,150px);height:100%;border-radius:10px;overflow:hidden;background:linear-gradient(145deg,#3f5268,#151b2a 61%,#a8734e);border:2px solid transparent;transform-origin:center;outline:none;transition:transform .16s,border-color .16s,filter .16s;box-shadow:0 6px 18px #0007}.poster:nth-child(2){background:linear-gradient(150deg,#c77b55,#422a49 47%,#121a2c)}.poster:nth-child(3){background:linear-gradient(150deg,#a9b0be,#2f3549 45%,#171a26)}.poster:nth-child(4){background:linear-gradient(150deg,#244b4d,#121d2a 55%,#ad8657)}.poster:nth-child(5){background:linear-gradient(150deg,#69486c,#1d2439 62%,#b98b61)}.poster:nth-child(6){background:linear-gradient(150deg,#b6a37c,#42466f 47%,#0e1524)}.poster:nth-child(7){background:linear-gradient(150deg,#2d4f65,#192238 50%,#bb6250)}.poster:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,#fff5 0,transparent 29%),linear-gradient(0deg,#080a10 0%,transparent 80%)}.poster:after{position:absolute;left:10%;right:10%;bottom:9%;content:attr(data-title);text-align:center;font-weight:850;letter-spacing:.08em;font-size:clamp(9px,.8vw,15px);text-shadow:0 2px 8px #000}.poster:focus{transform:scale(1.09);border-color:var(--accent);filter:brightness(1.15);z-index:4;box-shadow:0 0 0 2px #080a10,0 0 0 4px var(--accent),0 12px 28px #000b}
+.poster .shape{position:absolute;top:22%;left:23%;width:54%;height:34%;border-radius:50% 40% 45% 42%;background:linear-gradient(135deg,#fff6,#6677a333 70%);box-shadow:0 0 35px #fff2;transform:rotate(-22deg)}
+.note{position:absolute;right:2%;top:9%;font-size:11px;color:#c7c9d0;opacity:.75;z-index:7}.foot{position:absolute;right:3%;bottom:1.5%;font-size:10px;color:#707684}
+@media(max-aspect-ratio:1/1){.tv{min-height:100vh;aspect-ratio:auto}.hero{width:78%;top:18%;}.hero-art{right:-17%;width:76%;top:8%}.shelf{height:25%;bottom:8%}.poster{flex-basis:24vw}.rail{width:9%;left:1%}.hero{left:13%}.shelf{left:13%}.top{left:13%}}
+</style>
+</head>
+<body>
+<div class="tv" id="tv">
+ <div class="hero-art"></div><div class="orb"></div><div class="ring"></div>
+ <header class="top"><div class="brand">NUVIO<span> / CINEMA</span></div><div class="profile"><span>Discover</span><span class="avatar">S</span></div></header>
+ <nav class="rail" aria-label="Main navigation">
+  <button class="nav active" data-label="Home" aria-label="Home">⌂</button><button class="nav" data-label="Movies" aria-label="Movies">▣</button><button class="nav" data-label="Series" aria-label="Series">▤</button><button class="nav" data-label="Search" aria-label="Search">⌕</button><button class="nav" data-label="Library" aria-label="Library">♡</button><button class="nav" data-label="Settings" aria-label="Settings">⚙</button>
+ </nav>
+ <main class="hero">
+  <div class="eyebrow">Featured tonight</div>
+  <h1>Beyond<br/>the Horizon</h1>
+  <div class="meta"><span>2025</span><span class="dot"></span><span>2h 08m</span><span class="dot"></span><span>Adventure</span><span class="pill">16+</span><span>★ 8.4</span></div>
+  <p>On the edge of a mapped universe, one unexpected signal takes a crew beyond everything they believed was possible.</p>
+  <div class="actions"><button class="btn">▶ &nbsp; Play</button><button class="btn secondary">ⓘ &nbsp; Details</button></div>
+ </main>
+ <section class="shelf"><div class="shelf-head"><h2>Continue Watching</h2><span class="hint">Browse all　›</span></div><div class="cards">
+  <button class="poster" data-title="NIGHTFALL"><span class="shape"></span></button><button class="poster" data-title="THE LAST CITY"><span class="shape"></span></button><button class="poster" data-title="ECHOES"><span class="shape"></span></button><button class="poster" data-title="WILDERNESS"><span class="shape"></span></button><button class="poster" data-title="SUNDOWN"><span class="shape"></span></button><button class="poster" data-title="ORBITAL"><span class="shape"></span></button><button class="poster" data-title="BLUE HOUR"><span class="shape"></span></button>
+ </div></section>
+ <div class="foot">VISUAL PROTOTYPE · PLACEHOLDER ART · NOT CONNECTED TO PLAYBACK</div>
+</div>
+<script>
+document.querySelectorAll('button').forEach((b)=>b.addEventListener('click',()=>{ if(b.classList.contains('nav')){document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));b.classList.add('active');}}));
+</script>
+</body></html>
